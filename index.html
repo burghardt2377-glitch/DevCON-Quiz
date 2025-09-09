@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="ru"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Квиз: Угадай застройщика по фото&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Arial', sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>min-height: 100vh;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #333;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#quiz-container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 90%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 600px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 25px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-sizing: border-box;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.hide {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #4b6cb7;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 12px 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: calc(100% - 16px);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #3a5999;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-2px);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#image-container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 250px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 15px 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#quiz-image {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>object-fit: cover;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#progress {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #666;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#score {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 18px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 15px 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.feedback.correct { color: #2ecc71; font-weight: bold; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.feedback.incorrect { color: #e74c3c; font-weight: bold; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#result-text {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 22px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 20px 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#share-container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#share-link {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: calc(100% - 20px);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px dashed #ccc;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f9f9f9;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: copy;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="quiz-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Экран начала игры --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="start-screen"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1&gt;Угадай застройщика по фото&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Тебя ждут 10 вопросов. Смотри на фото жилого комплекса и выбирай, какой компании он принадлежит. Справишься?&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button id="start-btn" class="btn"&gt;Начать игру!&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Экран с вопросом --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="game-screen" class="hide"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="progress"&gt;Вопрос &lt;span id="current-question"&gt;1&lt;/span&gt;/&lt;span id="total-questions"&gt;10&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="image-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;img id="quiz-image" src="" alt="Жилой комплекс"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="options-container"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="feedback" class="feedback"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="score"&gt;Правильных ответов: &lt;span id="score-value"&gt;0&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Экран с результатами --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="result-screen" class="hide"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Твой результат!&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="result-text"&gt;Ты угадал &lt;span id="final-score"&gt;0&lt;/span&gt; из &lt;span id="final-total"&gt;10&lt;/span&gt; застройщиков!&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button id="restart-btn" class="btn"&gt;Сыграть ещё раз&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="share-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Поделись результатом:&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="text" id="share-link" value="https://virool.github.io/quiz-real-estate/" readonly&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button onclick="copyLink()" class="btn"&gt;Скопировать ссылку&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Массив с данными для квиза: ссылка на изображение и правильный ответ</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const quizData = [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>image: "https://s10.stc.yc.kpcdn.net/share/i/12/13207776/de-1200.jpg",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>correctAnswer: "ГК АПРИ",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>options: ["ГК АПРИ", "Этажи", "Capital Group", "СЗ 4Д"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>image: "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/e07568169018327.6445b9d9d35bf.jpg",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>correctAnswer: "Донстрой",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>options: ["Ленстройтрест", "Донстрой", "Гранель", "Glorax"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>image: "https://novostroika78.ru/assets/cities/spb/houses/sk-etalon-lenspeczsmu/zhk-galaktika-pro/1-2.jpg",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>correctAnswer: "ГК Эталон",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>options: ["ГК Эталон", "ГК Основа", "КОРТРОС", "Sminex"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>image: "https://storage.myseldon.com/news-pict-74/743CA638192C57378ECA417CC7E3EB44",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>correctAnswer: "Capital Group",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>options: ["Capital Group", "Авагрупп", "ГК КВС", "ГК ВЕКТОР"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>image: "https://cdn.bre.ru/storage/8a/8b/8a8b3c8c11e882a5f1c0e5a8c2f1c7f.jpg",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>correctAnswer: "Sminex",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>options: ["Пионер", "Sminex", "ГК Родина", "АК Барс Дом"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>image: "https://i.archi.ru/i/460759.jpg",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>correctAnswer: "КОРТРОС",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>options: ["КОРТРОС", "Главстрой", "Неометрия", "October Group"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>image: "hhttps://www.gor-stroy.com/templates/yootheme/cache/on_moscow-11c004fb.jpeg",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>correctAnswer: "Главстрой",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>options: ["Главстрой", "ГК Инсити", "Унистрой", "DARS"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>image: "https://novostroy-78.ru/img/complexes/6512922825b1f474d846ac96b29a3f45.jpg",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>correctAnswer: "Ленстройтрест",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>options: ["Ленстройтрест", "Tashir", "Prime Life Development", "АКВИЛОН НЕДВИЖИМОСТЬ"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>image: "https://avatars.mds.yandex.net/get-promoarticles/6426355/pub_666fe9ff9d5bcc699c5e96e4_6670305ce771314361cb1e72/scale_2400",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>correctAnswer: "Пионер",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>options: ["Пионер", "Рекомендуем недвижимость", "Садовое кольцо", "BAZA"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>image: "https://proplanirovki.ru/storage/blocks/1fc9b6f4-e3d8-4e49-a56c-b4d9495a9f9b.jpg",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>correctAnswer: "ГК Основа",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>options: ["ГК Основа", "Отрада Девелопмент", "RES Development", "Stonehedge"]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Элементы DOM</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const startScreen = document.getElementById('start-screen');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const gameScreen = document.getElementById('game-screen');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const resultScreen = document.getElementById('result-screen');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const startBtn = document.getElementById('start-btn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const restartBtn = document.getElementById('restart-btn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const quizImage = document.getElementById('quiz-image');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const optionsContainer = document.getElementById('options-container');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const feedbackEl = document.getElementById('feedback');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const currentQuestionEl = document.getElementById('current-question');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const totalQuestionsEl = document.getElementById('total-questions');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const scoreValueEl = document.getElementById('score-value');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const finalScoreEl = document.getElementById('final-score');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const finalTotalEl = document.getElementById('final-total');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Переменные игры</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let currentQuestion = 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let score = 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>totalQuestionsEl.textContent = quizData.length;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Запуск игры</p>
+<p class="p1"><span class="Apple-converted-space">        </span>startBtn.addEventListener('click', startGame);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>restartBtn.addEventListener('click', startGame);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function startGame() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>currentQuestion = 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>score = 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>scoreValueEl.textContent = score;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>startScreen.classList.add('hide');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>resultScreen.classList.add('hide');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gameScreen.classList.remove('hide');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>feedbackEl.textContent = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>loadQuestion();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function loadQuestion() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (currentQuestion &gt;= quizData.length) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showResult();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>resetState();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const question = quizData[currentQuestion];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>currentQuestionEl.textContent = currentQuestion + 1;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>quizImage.src = question.image;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>quizImage.alt = `ЖК от ${question.correctAnswer}`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Перемешиваем варианты ответов для каждого вопроса</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const shuffledOptions = [...question.options].sort(() =&gt; Math.random() - 0.5);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>shuffledOptions.forEach(option =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const button = document.createElement('button');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>button.textContent = option;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>button.classList.add('btn');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>button.addEventListener('click', () =&gt; selectAnswer(option, question.correctAnswer));</p>
+<p class="p1"><span class="Apple-converted-space">                </span>optionsContainer.appendChild(button);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function resetState() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>feedbackEl.textContent = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>feedbackEl.className = 'feedback';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>while (optionsContainer.firstChild) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>optionsContainer.firstChild.remove();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function selectAnswer(selectedOption, correctAnswer) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Блокируем все кнопки после выбора</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const allButtons = optionsContainer.querySelectorAll('.btn');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>allButtons.forEach(btn =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>btn.disabled = true;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Проверяем ответ</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (selectedOption === correctAnswer) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>feedbackEl.textContent = 'Верно! 👍';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>feedbackEl.classList.add('correct');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>score++;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>scoreValueEl.textContent = score;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>feedbackEl.textContent = `Нет! Это: ${correctAnswer}`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>feedbackEl.classList.add('incorrect');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Ждем 1.5 секунды и загружаем следующий вопрос</p>
+<p class="p1"><span class="Apple-converted-space">            </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>currentQuestion++;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>loadQuestion();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}, 1500);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function showResult() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gameScreen.classList.add('hide');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>resultScreen.classList.remove('hide');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>finalScoreEl.textContent = score;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>finalTotalEl.textContent = quizData.length;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function copyLink() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const copyText = document.getElementById("share-link");</p>
+<p class="p1"><span class="Apple-converted-space">            </span>copyText.select();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>copyText.setSelectionRange(0, 99999);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>navigator.clipboard.writeText(copyText.value);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>alert("Ссылка скопирована: " + copyText.value);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
